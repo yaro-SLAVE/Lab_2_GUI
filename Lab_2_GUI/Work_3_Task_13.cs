@@ -12,29 +12,29 @@ namespace Lab_2_GUI
 {
     public partial class Work_3_Task_13 : Form
     {
-        private Form form2;
-        public Work_3_Task_13(Form form2)
+        public Work_3_Task_13()
         {
             InitializeComponent();
-            this.form2 = form2;
+            lineBox.Text = Properties.Settings.Default.lineBox;
         }
 
         private void Work_3_Task_13_FormClosing(object sender, FormClosingEventArgs e)
         {
+            Properties.Settings.Default.lineBox = lineBox.Text;
+            Properties.Settings.Default.Save();
             Application.Exit();
         }
 
         private void previousButton_Click(object sender, EventArgs e)
         {
-            this.Hide();
-            form2.Show();
+            Program.goToWork(2, 0);
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
             try
             {
-                int result = getSum(lineBox.Text);
+                int result = Logic.getSum(lineBox.Text);
                 resultLabel.ForeColor = Color.Blue;
                 resultLabel.Text = result.ToString();
             }
@@ -45,63 +45,9 @@ namespace Lab_2_GUI
             }
         }
 
-        private static int getSum(string str)
+        private void button1_Click_1(object sender, EventArgs e)
         {
-            int sum = 0;
-            int n = 0;
-            try
-            {
-                for (int i = 0; i < str.Length; i++)
-                {
-                    if (str[i] == '+' || str[i] == '-')
-                    {
-                        ++n;
-                    }
-                }
-
-                int[] nums = new int[n + 1];
-                char[] syms = new char[n];
-                string dop = "";
-                int k = 0;
-                int g = 0;
-                for (int i = 0; i < str.Length; i++)
-                {
-                    if (str[i] != '+' && str[i] != '-')
-                    {
-                        dop += str[i];
-                    }
-
-                    else
-                    {
-                        nums[k] = int.Parse(dop);
-                        syms[g] = str[i];
-                        ++k;
-                        ++g;
-                        dop = "";
-                    }
-                }
-
-                nums[k] = int.Parse(dop);
-
-                sum = nums[0];
-
-                for (int i = 0; i < n; ++i)
-                {
-                    if (syms[i] == '+')
-                    {
-                        sum += nums[i + 1];
-                    }
-                    else
-                    {
-                        sum -= nums[i + 1];
-                    }
-                }
-            } catch (FormatException)
-            {
-                throw;
-            }
-
-            return sum;
+            Program.goToWork(2, 1);
         }
     }
 }

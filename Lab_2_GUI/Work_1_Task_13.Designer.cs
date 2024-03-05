@@ -46,7 +46,8 @@
             this.resultButton = new System.Windows.Forms.Button();
             this.label10 = new System.Windows.Forms.Label();
             this.resultLabel = new System.Windows.Forms.Label();
-            this.nextButton = new System.Windows.Forms.Button();
+            this.thirdButton = new System.Windows.Forms.Button();
+            this.secondButton = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // label1
@@ -201,22 +202,33 @@
             this.resultLabel.TabIndex = 17;
             this.resultLabel.Text = "Результат";
             // 
-            // nextButton
+            // thirdButton
             // 
-            this.nextButton.Location = new System.Drawing.Point(627, 363);
-            this.nextButton.Name = "nextButton";
-            this.nextButton.Size = new System.Drawing.Size(161, 75);
-            this.nextButton.TabIndex = 18;
-            this.nextButton.Text = "Следующее";
-            this.nextButton.UseVisualStyleBackColor = true;
-            this.nextButton.Click += new System.EventHandler(this.button1_Click);
+            this.thirdButton.Location = new System.Drawing.Point(627, 363);
+            this.thirdButton.Name = "thirdButton";
+            this.thirdButton.Size = new System.Drawing.Size(161, 75);
+            this.thirdButton.TabIndex = 18;
+            this.thirdButton.Text = "Третье";
+            this.thirdButton.UseVisualStyleBackColor = true;
+            this.thirdButton.Click += new System.EventHandler(this.thirdButton_Click);
+            // 
+            // secondButton
+            // 
+            this.secondButton.Location = new System.Drawing.Point(12, 363);
+            this.secondButton.Name = "secondButton";
+            this.secondButton.Size = new System.Drawing.Size(161, 75);
+            this.secondButton.TabIndex = 19;
+            this.secondButton.Text = "Второе";
+            this.secondButton.UseVisualStyleBackColor = true;
+            this.secondButton.Click += new System.EventHandler(this.secondButton_Click);
             // 
             // Work_1_Task_13
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Controls.Add(this.nextButton);
+            this.Controls.Add(this.secondButton);
+            this.Controls.Add(this.thirdButton);
             this.Controls.Add(this.resultLabel);
             this.Controls.Add(this.label10);
             this.Controls.Add(this.resultButton);
@@ -263,6 +275,7 @@
         private System.Windows.Forms.Button resultButton;
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.Label resultLabel;
-        private System.Windows.Forms.Button nextButton;
+        private System.Windows.Forms.Button thirdButton;
+        private System.Windows.Forms.Button secondButton;
     }
 }

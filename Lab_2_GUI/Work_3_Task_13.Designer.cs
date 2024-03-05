@@ -34,6 +34,7 @@
             this.label2 = new System.Windows.Forms.Label();
             this.resultLabel = new System.Windows.Forms.Label();
             this.resultButton = new System.Windows.Forms.Button();
+            this.button1 = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // previousButton
@@ -42,7 +43,7 @@
             this.previousButton.Name = "previousButton";
             this.previousButton.Size = new System.Drawing.Size(199, 75);
             this.previousButton.TabIndex = 0;
-            this.previousButton.Text = "Предыдущее";
+            this.previousButton.Text = "Первое";
             this.previousButton.UseVisualStyleBackColor = true;
             this.previousButton.Click += new System.EventHandler(this.previousButton_Click);
             // 
@@ -91,11 +92,22 @@
             this.resultButton.UseVisualStyleBackColor = true;
             this.resultButton.Click += new System.EventHandler(this.button1_Click);
             // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(589, 363);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(199, 75);
+            this.button1.TabIndex = 6;
+            this.button1.Text = "Второе";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click_1);
+            // 
             // Work_3_Task_13
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.button1);
             this.Controls.Add(this.resultButton);
             this.Controls.Add(this.resultLabel);
             this.Controls.Add(this.label2);
@@ -118,5 +130,6 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label resultLabel;
         private System.Windows.Forms.Button resultButton;
+        private System.Windows.Forms.Button button1;
     }
 }

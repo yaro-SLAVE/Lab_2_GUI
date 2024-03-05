@@ -16,11 +16,23 @@ namespace Lab_2_GUI
         public Work_1_Task_13()
         {
             InitializeComponent();
-            this.form2 = new Work_2_Task_16(this);
+            trainComingHours.Text = Properties.Settings.Default.trainComingHours;
+            trainComingMinutes.Text = Properties.Settings.Default.trainComingMinutes;
+            trainLeavingHours.Text = Properties.Settings.Default.trainLeavingHours;
+            trainLeavingMinutes.Text = Properties.Settings.Default.trainLeavingMinutes;
+            passengerComingHours.Text = Properties.Settings.Default.passengerComingHours;
+            passengerComingMinutes.Text = Properties.Settings.Default.passengerComingMinutes;
         }
 
         private void Work_1_Task_13_FormClosing(object sender, FormClosingEventArgs e)
         {
+            Properties.Settings.Default.trainComingHours = trainComingHours.Text;
+            Properties.Settings.Default.trainComingMinutes = trainComingMinutes.Text;
+            Properties.Settings.Default.trainLeavingHours = trainLeavingHours.Text;
+            Properties.Settings.Default.trainLeavingMinutes = trainLeavingMinutes.Text;
+            Properties.Settings.Default.passengerComingMinutes = passengerComingMinutes.Text;
+            Properties.Settings.Default.passengerComingHours = passengerComingHours.Text;
+            Properties.Settings.Default.Save();
             Application.Exit();
         }
 
@@ -36,7 +48,7 @@ namespace Lab_2_GUI
                     (int.Parse(passengerComingMinutes.Text) <= 59 && int.Parse(passengerComingMinutes.Text) >= 0))
                 {
                     resultLabel.ForeColor = Color.Blue;
-                    resultLabel.Text = getTrain(int.Parse(trainComingHours.Text), int.Parse(trainComingMinutes.Text), int.Parse(trainLeavingHours.Text), int.Parse(trainLeavingMinutes.Text), int.Parse(passengerComingHours.Text), int.Parse(passengerComingMinutes.Text));
+                    resultLabel.Text = Logic.getTrain(int.Parse(trainComingHours.Text), int.Parse(trainComingMinutes.Text), int.Parse(trainLeavingHours.Text), int.Parse(trainLeavingMinutes.Text), int.Parse(passengerComingHours.Text), int.Parse(passengerComingMinutes.Text));
 
                 }
                 else
@@ -52,94 +64,14 @@ namespace Lab_2_GUI
             }
         }
 
-        private static string getTrain(int a, int b, int c, int d, int n, int m)
+        private void thirdButton_Click(object sender, EventArgs e)
         {
-            string result;
-            var timeRange = new int[4];
-            timeRange[0] = a;
-            timeRange[1] = c;
-            timeRange[2] = b;
-            timeRange[3] = d;
-            var humanComing = new int[2] { n, m };
-
-            bool flag = false;
-
-            if (timeRange[0] == timeRange[1] && timeRange[2] == timeRange[3])
-            {
-                flag = false;
-            }
-
-            else
-            {
-                if (timeRange[0] < timeRange[1])
-                {
-                    if (humanComing[0] > timeRange[0] && humanComing[0] < timeRange[1])
-                    {
-                        flag = true;
-                    }
-
-                    else if (humanComing[0] == timeRange[0] && humanComing[1] >= timeRange[2])
-                    {
-                        flag = true;
-                    }
-
-                    else if (humanComing[0] == timeRange[1] && humanComing[1] <= timeRange[3])
-                    {
-                        flag = true;
-                    }
-
-                    else if (humanComing[0] < timeRange[0] && humanComing[0] != timeRange[1])
-                    {
-                        flag = true;
-                    }
-                }
-
-                else if (timeRange[1] < timeRange[0])
-                {
-                    if (humanComing[0] <= timeRange[1] && (humanComing[0] >= timeRange[0] || humanComing[0] >= 0))
-                    {
-                        if (humanComing[0] == timeRange[0] && humanComing[1] >= timeRange[3])
-                        {
-                            flag = true;
-                        }
-
-                        else if (humanComing[0] == timeRange[1] && humanComing[1] <= timeRange[4])
-                        {
-                            flag = true;
-                        }
-
-                        else if (humanComing[0] < timeRange[1] && (humanComing[0] > timeRange[0] || humanComing[0] >= 0))
-                        {
-                            flag = true;
-                        }
-                    }
-                }
-
-                else if (timeRange[0] == timeRange[1])
-                {
-                    if (humanComing[1] >= timeRange[2] && humanComing[1] <= timeRange[3])
-                    {
-                        flag = true;
-                    }
-                }
-            }
-
-            if (flag)
-            {
-                result = "Поезд стоит на платформе";
-            }
-            else
-            {
-                result = "Поезд НЕ стоит на платформе";
-            }
-
-            return result;
+            Program.goToWork(0, 2);
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void secondButton_Click(object sender, EventArgs e)
         {
-            this.Hide();
-            form2.Show();
+            Program.goToWork(0, 1);
         }
     }
 }
